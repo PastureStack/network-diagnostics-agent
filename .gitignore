@@ -1,4 +1,2 @@
-.dapper
-dist
-bin
-network-diagnostics-agent
+/bin/
+/coverage.out
