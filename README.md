@@ -4,6 +4,8 @@ Current source builds use Go 1.27.3 while the Go language minimum remains 1.26.0
 
 This repository provides the host-side collector used by PastureStack Network Diagnostics. The agent runs once per managed host, reads a bounded set of read-only host network counters, removes direct host and network identifiers at the source, and sends a compact snapshot to the authenticated diagnostics service.
 
+The current published Linux release is [v0.2.1](https://github.com/PastureStack/network-diagnostics-agent/releases/tag/v0.2.1).
+
 PastureStack is an independent community effort to preserve, audit, and modernize the Rancher 1.6 ecosystem. It is not affiliated with or endorsed by Rancher Labs or SUSE.
 
 **Upstream:** [`rancher/network-diagnostics-agent`](https://github.com/rancher/network-diagnostics-agent). This GitHub fork retains the upstream Git history, authorship, dates, and license notices unchanged; PastureStack maintenance is consolidated into one commit after the preserved upstream boundary.
@@ -29,7 +31,7 @@ docker run --rm \
   -v /proc:/host/proc:ro \
   -v /etc/resolv.conf:/host/etc/resolv.conf:ro \
   -v /etc/machine-id:/host/etc/machine-id:ro \
-  ghcr.io/pasturestack/network-diagnostics-agent:v0.2.0
+  ghcr.io/pasturestack/network-diagnostics-agent:v0.2.1
 ```
 
 The container runs without root, host PID, host network, Linux capabilities, or a container-engine socket. Its health endpoint is available on port `8090`; it becomes healthy only after at least one successful upload.
@@ -60,7 +62,7 @@ The deployable container starts the `run` command explicitly.
 go test ./...
 go vet ./...
 go build -trimpath -o bin/network-diagnostics-agent ./cmd/network-diagnostics-agent
-docker build --build-arg VERSION=v0.2.0 -t network-diagnostics-agent:v0.2.0 .
+docker build --build-arg VERSION=v0.2.1 -t network-diagnostics-agent:v0.2.1 .
 ```
 
 Run `sh scripts/validate.sh` on Unix-like systems or `pwsh -File scripts/validate.ps1` on Windows for formatting, repeated tests, vetting, module verification, and reproducible-build checks.
