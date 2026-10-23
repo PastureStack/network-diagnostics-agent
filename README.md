@@ -1,5 +1,7 @@
 # Network Diagnostics Agent
 
+Current source builds use Go 1.27.3 while the Go language minimum remains 1.26.0. The scratch runtime receives its CA bundle from the checksum-pinned Debian bookworm `ca-certificates` 20250419~deb12u2 package. These source inputs take effect in newly built artifacts; existing published release coordinates below describe their original artifacts.
+
 This repository provides the host-side collector used by PastureStack Network Diagnostics. The agent runs once per managed host, reads a bounded set of read-only host network counters, removes direct host and network identifiers at the source, and sends a compact snapshot to the authenticated diagnostics service.
 
 PastureStack is an independent community effort to preserve, audit, and modernize the Rancher 1.6 ecosystem. It is not affiliated with or endorsed by Rancher Labs or SUSE.
